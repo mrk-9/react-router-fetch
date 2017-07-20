@@ -1,0 +1,88 @@
+{
+  "name": "react-router-fetch",
+  "version": "2.0.1",
+  "description": "Calls fetch on matched route components and returns a promise",
+  "keywords": "react, react-router, fetch",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kellyrmilligan/react-router-fetch.git"
+  },
+  "scripts": {
+    "build": "npm-run-all -l clean standard babel",
+    "babel": "babel src -d . -D -s",
+    "babel:watch": "babel src -d . -w -D -s",
+    "clean": "rimraf ./lib",
+    "dev": "npm-run-all clean standard --parallel babel:watch standard:watch",
+    "prepublish": "npm-run-all -l test build",
+    "standard": "standard --verbose | snazzy",
+    "standard:watch": "onchange 'src/**/*.js' -- npm run standard",
+    "test": "cross-env NODE_ENV=test jest",
+    "test:watch": "npm run test -- --watch",
+    "test:coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+  },
+  "author": "Kelly Milligan",
+  "license": "MIT",
+  "jest": {
+    "roots": [
+      "src"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "coverageDirectory": "coverage",
+    "collectCoverage": true,
+    "testRegex": "(/__tests__/.*|\\.(test))\\.js$",
+    "coverageThreshold": {
+      "global": {
+        "branches": 75,
+        "functions": 75,
+        "lines": 75,
+        "statements": 75
+      }
+    },
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/fixtures/",
+      "/script/"
+    ]
+  },
+  "standard": {
+    "parser": "babel-eslint"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^15.5.4",
+    "react-router": "^4.0.0",
+    "react-router-config": "^1.0.0-beta.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-core": "^6.6.4",
+    "babel-eslint": "^7.1.1",
+    "babel-jest": "^19.0.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-2": "^6.18.0",
+    "babel-runtime": "^6.11.6",
+    "coveralls": "^2.11.15",
+    "cross-env": "^4.0.0",
+    "jest": "^19.0.1",
+    "nodemon": "^1.9.0",
+    "npm-run-all": "^4.0.1",
+    "onchange": "^3.0.2",
+    "react": "^15.5.4",
+    "react-router": "^4.0.0",
+    "react-router-config": "^1.0.0-beta.3",
+    "rimraf": "^2.5.4",
+    "snazzy": "^6.0.0",
+    "source-map-support": "^0.4.0",
+    "standard": "^10.0.0"
+  }
+}
